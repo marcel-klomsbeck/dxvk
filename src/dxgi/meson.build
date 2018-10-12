@@ -15,10 +15,22 @@ dxgi_src = [
   'dxgi_swapchain.cpp',
 ]
 
+dxgi_vkd3d_src = [
+  'vkd3d/vkd3d_loader.cpp',
+  'vkd3d/vkd3d_presenter.cpp',
+]
+
+dxgi_inc = [ dxvk_include_path ]
+
+if dxvk_winelib
+  dxgi_src += dxgi_vkd3d_src
+  dxgi_inc += include_directories('/usr/include/vkd3d')
+endif
+
 dxgi_dll = shared_library('dxgi'+dll_ext, dxgi_src,
   name_prefix         : '',
   dependencies        : [ dxvk_dep ],
-  include_directories : dxvk_include_path,
+  include_directories : dxgi_inc,
   install             : true,
   vs_module_defs      : 'dxgi'+def_spec_ext,
   objects             : not dxvk_msvc ? 'dxgi'+def_spec_ext : [],
