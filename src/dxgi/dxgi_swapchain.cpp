@@ -2,6 +2,10 @@
 #include "dxgi_output.h"
 #include "dxgi_swapchain.h"
 
+#ifdef __WINE__
+#include "./vkd3d/vkd3d_presenter.h"
+#endif
+
 namespace dxvk {
   
   DxgiSwapChain::DxgiSwapChain(
@@ -697,6 +701,14 @@ namespace dxvk {
         reinterpret_cast<void**>(&presentDevice))))
       return presentDevice->CreateSwapChainForHwnd(m_window, &m_desc, ppSwapChain);
     
+    #ifdef __WINE__
+    Com<ID3D12CommandQueue> presentQueue;
+
+    if (SUCCEEDED(pDevice->QueryInterface(__uuidof(ID3D12CommandQueue),
+        reinterpret_cast<void**>(&presentQueue))))
+      return VkD3DPresenter::Create(m_factory.ptr(), presentQueue.ptr(), m_window, &m_desc, ppSwapChain);
+    #endif
+
     return E_INVALIDARG;
   }
   
