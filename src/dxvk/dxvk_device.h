@@ -186,6 +186,12 @@ namespace dxvk {
      * \returns The context object
      */
     Rc<DxvkContext> createContext();
+
+    /**
+     * \brief Creates a GPU event
+     * \returns New GPU event
+     */
+    Rc<DxvkGpuEvent> createGpuEvent();
     
     /**
      * \brief Creates framebuffer for a set of render targets
@@ -381,6 +387,8 @@ namespace dxvk {
     Rc<DxvkMemoryAllocator>     m_memory;
     Rc<DxvkRenderPassPool>      m_renderPassPool;
     Rc<DxvkPipelineManager>     m_pipelineManager;
+
+    Rc<DxvkGpuEventPool>        m_gpuEventPool;
 
     Rc<DxvkMetaClearObjects>    m_metaClearObjects;
     Rc<DxvkMetaCopyObjects>     m_metaCopyObjects;
