@@ -223,8 +223,12 @@ namespace dxvk {
     blitRegion.dstSubresource = { VK_IMAGE_ASPECT_COLOR_BIT, 0, 0, 1 },
     blitRegion.dstOffsets[0]  = { 0, 0, 0 };
     blitRegion.dstOffsets[1]  = { int32_t(info.imageExtent.width), int32_t(info.imageExtent.height), 1 };
-    
+
     VkFilter filter = VK_FILTER_NEAREST;
+
+    if (m_desc.Width  != info.imageExtent.width
+     || m_desc.Height != info.imageExtent.height)
+      filter = VK_FILTER_LINEAR;
 
     m_vkd->vkCmdBlitImage(bb.cmdBuffer,
       bb.image,    VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL,
