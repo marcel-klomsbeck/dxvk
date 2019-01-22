@@ -365,8 +365,8 @@ public:
     m_context->RSSetViewports(1, &viewport);
     
     FLOAT color[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
-    m_context->OMSetRenderTargets(1, &m_bufferView, nullptr);
     m_context->ClearRenderTargetView(m_bufferView.ptr(), color);
+    m_context->OMSetRenderTargets(1, &m_bufferView, nullptr);
     
     m_context->VSSetShader(m_vertexShader.ptr(), nullptr, 0);
     m_context->HSSetShader(m_hullShader.ptr(), nullptr, 0);
