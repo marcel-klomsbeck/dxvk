@@ -86,7 +86,7 @@ namespace dxvk::hud {
       m_renderer.drawText(ctx, 16.0f,
         { position.x, position.y },
         { 1.0f, 1.0f, 1.0f, 1.0f },
-        "DXVK " DXVK_VERSION);
+        "DXVK enhanced by marcel " DXVK_VERSION);
       position.y += 24.0f;
     }
 
