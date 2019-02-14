@@ -2,7 +2,7 @@
 # ENHANCED
 ## by marcel
 
-A Vulkan-based translation layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine.
+An opengl (marcel) ad Vulkan (doitsujin)-based translation layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine.
 
 For the current status of the project, please refer to the [project wiki](https://github.com/doitsujin/dxvk/wiki).
 
