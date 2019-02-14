@@ -1,6 +1,6 @@
 w_metadata setup_dxvk dlls \
-    title="DXVK" \
-    publisher="Philip Rebohle" \
+    title="DXVK Enhanced" \
+    publisher="Philip Rebohle and marcel" \
     year="2019" \
     media="manual_download" \
     file1="dxgi.dll" \
